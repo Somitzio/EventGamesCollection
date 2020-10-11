@@ -48,11 +48,6 @@ public class Game extends BaseGame implements CommandExecutor, Listener {
 
         ArrowFiller arrowFiller = new ArrowFiller(getSeekers());
         getTasksHandler().addRunnable(arrowFiller);
-        try {
-            getTasksHandler().addTask();
-        } catch (TaskAlreadyExistsException ex) {
-
-        }
     }
 
     @Override
@@ -118,7 +113,7 @@ public class Game extends BaseGame implements CommandExecutor, Listener {
                 if(isSeeker(damaged)) {
                     addPotionEffect(damaged, PotionEffectType.SLOW, 200, 5);
                     addPotionEffect(damaged, PotionEffectType.REGENERATION, 60, 5);
-                    damaged.sendMessage("You were fatally wounded by " + damager.getDisplayName() + " to ");
+                    damaged.sendMessage("You were fatally wounded by " + damager.getDisplayName() + ".");
                 } else {
                     regen(damaged);
                     clear(damaged);

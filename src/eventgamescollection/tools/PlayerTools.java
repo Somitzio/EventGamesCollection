@@ -16,7 +16,7 @@ public class PlayerTools {
     }
 
     public static void removeFire(Player player) {
-        player.setFireTicks();
+        player.setFireTicks(0);
     }
 
     public static void regen(Player player) {
