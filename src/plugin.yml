@@ -1,0 +1,46 @@
+name: "EventGamesCollection"
+main: eventgamescollection.Main
+version: "1.0.0"
+description: "A plugin to host events"
+author: "Discord: Fachi#2979"
+
+permissions:
+
+  # General Permissions
+  egc.load:
+    description: "Allows to load and unload games."
+
+  # Hide and Seek Permissions
+  egc.games.hide_and_seek.auto_seeker:
+    description: "Everyone who has this permission will automatically be seeker."
+    default: op
+
+  egc.games.hide_and_seek.set:
+    description: "Lets you change the group of any player."
+    default: op
+
+
+
+commands:
+
+  # General Commands
+  load:
+    description: "Loads a game and unloads any active games."
+    usage: "Usage: /<command> [game]"
+    permission: egc.load
+
+  unload:
+    description: "Unloads the current game."
+    usage: "Usage: /<command>"
+    permission: egc.load
+
+  # Hide and Seek Commands
+  setseeker:
+    description: "Sets the user as seeker."
+    usage: "Usage: /<command> [user]"
+    permission: egc.games.hide_and_seek.set
+
+  sethider:
+    description: "Sets the user as hider."
+    usage: "Usage: /<command> [user]"
+    permission: egc.games.hide_and_seek.set
