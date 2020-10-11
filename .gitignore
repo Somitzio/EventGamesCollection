@@ -1,2 +1,5 @@
 # Project exclude paths
 /out/
+/EventGamesCollection.iml
+/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar
+/.idea/
