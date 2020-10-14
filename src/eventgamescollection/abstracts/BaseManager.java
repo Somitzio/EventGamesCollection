@@ -1,4 +1,4 @@
-package eventgamescollection.inheritance;
+package eventgamescollection.abstracts;
 
 import eventgamescollection.Main;
 import eventgamescollection.interfaces.Loadable;
@@ -10,7 +10,5 @@ import eventgamescollection.interfaces.Loadable;
  * and {@link eventgamescollection.managers.PlayerManager} which stores and manages dead and alive players.
  */
 public abstract class BaseManager extends Base implements Loadable {
-    public BaseManager(Main plugin) {
-        super(plugin);
-    }
+    public BaseManager() { }
 }

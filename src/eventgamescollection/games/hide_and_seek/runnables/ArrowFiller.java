@@ -13,9 +13,11 @@ import java.util.List;
  */
 public class ArrowFiller implements Runnable {
     private final List<Player> seekers;
+    private final ItemStack arrowItemStack;
 
     public ArrowFiller(List<Player> seekers) {
         this.seekers = seekers;
+        this.arrowItemStack = new ItemStack(Material.ARROW, 1);
     }
 
     @Override
@@ -23,10 +25,13 @@ public class ArrowFiller implements Runnable {
         for(Player player : seekers) {
             Inventory inv = player.getInventory();
             int amount = countItems(inv, Material.ARROW);
-            if(amount < 3) {
-                ItemStack arrow = new ItemStack(Material.ARROW, 1);
-                inv.addItem(arrow);
-            }
+            if(amount < 3)
+                inv.addItem(getArrowItemStack());
+            player.sendMessage("Maybe gave you an arrow.");
         }
+    }
+
+    public ItemStack getArrowItemStack() {
+        return arrowItemStack;
     }
 }

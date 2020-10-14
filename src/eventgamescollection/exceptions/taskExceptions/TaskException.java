@@ -1,0 +1,6 @@
+package eventgamescollection.exceptions.taskExceptions;
+
+import eventgamescollection.exceptions.RuntimeEventGamesCollectionException;
+
+public class TaskException extends RuntimeEventGamesCollectionException {
+}

@@ -1,8 +1,9 @@
 package eventgamescollection.managers;
 
 import eventgamescollection.Main;
-import eventgamescollection.inheritance.BaseGame;
-import eventgamescollection.inheritance.BaseManager;
+import eventgamescollection.abstracts.BaseGame;
+import eventgamescollection.abstracts.BaseManager;
+import eventgamescollection.interfaces.Loadable;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,22 +18,20 @@ import java.lang.reflect.InvocationTargetException;
  * {@link GamesManager#getConformName(String[])}. The package must also contain a {@link BaseGame} class with the
  * name "Game" which is the class instantiated and loaded and should be considered the main class of the game.
  * The constructor of this class must only accept one parameter of type {@link Main} the name of the game should be set
- * when calling the super class {@link BaseGame#BaseGame(Main, String)}. Any extra tools specific to this package should
+ * when calling the super class {@link BaseGame#BaseGame(String)}. Any extra tools specific to this package should
  * also be contained within the package.
  */
 public class GamesManager extends BaseManager implements CommandExecutor {
     private BaseGame currentGame;
 
-    public GamesManager(Main plugin) {
-        super(plugin);
-    }
+    public GamesManager() { }
 
     /**
      * Returns a name given an array of strings. This works by first parsing the given strings to all lower case
      * and then joining them with an underscore. An example would be "My Secret Game" -> "my_secret_game".  This is
      * used to find the correct package within games.
-     * @param args The array of
-     * @return
+     * @param args The array of strings to convert.
+     * @return The conform name.
      */
     public String getConformName(String[] args) {
         for(String string : args)
@@ -44,7 +43,7 @@ public class GamesManager extends BaseManager implements CommandExecutor {
      * Uses reflection and a conform name returned by {@link GamesManager#getConformName(String[])} to find the
      * {@link BaseGame} class within the package with the given name.
      * @param name The name of the package to search for.
-     * @return The instantiated {@link BaseGame}. NOTE: This instance still has to be loaded using {@link Loadable#load()}.
+     * @return The instantiated {@link BaseGame}. NOTE: This instance still has to be loaded using {@link Loadable#load()} ()}.
      * @throws NoSuchMethodException Thrown if the constructor is not found.
      * @throws ClassNotFoundException Thrown if there is no package with the given name or the {@link BaseGame} class does not exist.
      * @throws IllegalAccessException Thrown if the game instance does not have access to certain methods or fields.
@@ -53,8 +52,8 @@ public class GamesManager extends BaseManager implements CommandExecutor {
      */
     public BaseGame getGame(String name) throws NoSuchMethodException, ClassNotFoundException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Class<?> gameClass = Class.forName("eventgamescollection.games." + name + ".Game");
-        Constructor<?> gameConstructor = gameClass.getConstructor(Main.class);
-        return (BaseGame) gameConstructor.newInstance(getPlugin());
+        Constructor<?> gameConstructor = gameClass.getConstructor();
+        return (BaseGame) gameConstructor.newInstance();
     }
 
     /**

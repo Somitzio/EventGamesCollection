@@ -1,7 +1,7 @@
 package eventgamescollection;
 
 import static eventgamescollection.logging.Log.*;
-import eventgamescollection.inheritance.BaseGame;
+import eventgamescollection.abstracts.BaseGame;
 import eventgamescollection.managers.GamesManager;
 import eventgamescollection.managers.PlayerManager;
 import eventgamescollection.managers.TestingManager;
@@ -14,14 +14,14 @@ public class Main extends JavaPlugin {
     private final GamesManager gamesManager;
     private final TestingManager testingManager;
 
-
     public Main() {
         setLogger(getLogger());
         plugin = this;
         this.running = false;
-        this.playerManager = new PlayerManager(this);
-        this.gamesManager = new GamesManager(this);
-        this.testingManager = new TestingManager(this, true, "/load hide and seek", "Lelleck");
+        this.playerManager = new PlayerManager();
+        this.gamesManager = new GamesManager();
+        // change active to true to active the TestingManager
+        this.testingManager = new TestingManager(true, "/load hide and seek", "Lelleck");
     }
 
     @Override

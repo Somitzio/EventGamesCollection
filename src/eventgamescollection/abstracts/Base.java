@@ -1,4 +1,4 @@
-package eventgamescollection.inheritance;
+package eventgamescollection.abstracts;
 
 import eventgamescollection.Main;
 
@@ -8,8 +8,8 @@ import eventgamescollection.Main;
 public abstract class Base {
     private final Main plugin;
 
-    public Base(Main plugin) {
-        this.plugin = plugin;
+    public Base() {
+        this.plugin = Main.getPlugin();
     }
 
     protected Main getPlugin() {

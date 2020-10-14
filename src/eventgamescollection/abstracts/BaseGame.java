@@ -1,4 +1,4 @@
-package eventgamescollection.inheritance;
+package eventgamescollection.abstracts;
 
 import static eventgamescollection.logging.Log.*;
 import eventgamescollection.Main;
@@ -13,8 +13,7 @@ import eventgamescollection.interfaces.Loadable;
 public abstract class BaseGame extends Base implements Loadable {
     private final String name;
 
-    public BaseGame(Main plugin, String name) {
-        super(plugin);
+    public BaseGame(String name) {
         this.name = name;
         info("Initializing " + getName());
     }

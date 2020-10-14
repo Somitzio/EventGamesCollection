@@ -1,7 +1,7 @@
 package eventgamescollection.managers;
 
 import eventgamescollection.Main;
-import eventgamescollection.inheritance.BaseManager;
+import eventgamescollection.abstracts.BaseManager;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -20,8 +20,7 @@ public class PlayerManager extends BaseManager implements Listener {
     private final List<UUID> deadPlayers;
     private Location deadPlayerSpawn;
 
-    public PlayerManager(Main plugin) {
-        super(plugin);
+    public PlayerManager() {
         this.alivePlayers = new ArrayList<>();
         this.deadPlayers = new ArrayList<>();
         this.deadPlayerSpawn = null;

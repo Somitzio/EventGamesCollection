@@ -1,18 +1,15 @@
-package eventgamescollection.tasks;
+package eventgamescollection.handlers.tasks;
 
-import eventgamescollection.Main;
-import eventgamescollection.exceptions.TaskAlreadyExistsException;
-import eventgamescollection.exceptions.TaskNotFoundException;
-import javafx.concurrent.Task;
+import eventgamescollection.abstracts.Base;
+import eventgamescollection.exceptions.taskExceptions.TaskAlreadyExistsException;
+import eventgamescollection.exceptions.taskExceptions.TaskNotFoundException;
 
 import java.util.HashMap;
 
-public class TasksHandler {
+public class TasksHandler extends Base {
     private final HashMap<String, TaskWrapper> tasks;
-    private final Main plugin;
 
-    public TasksHandler(Main plugin) {
-        this.plugin = plugin;
+    public TasksHandler() {
         this.tasks = new HashMap<>();
     }
 
@@ -58,10 +55,6 @@ public class TasksHandler {
 
     public TaskWrapper getTask(String name) {
         return getTasks().get(name);
-    }
-
-    public Main getPlugin() {
-        return plugin;
     }
 
     public boolean hasTask(String name) {

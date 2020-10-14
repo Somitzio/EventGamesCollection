@@ -1,12 +1,11 @@
-package eventgamescollection.tasks;
+package eventgamescollection.handlers.tasks;
 
 import eventgamescollection.Main;
+import eventgamescollection.abstracts.Base;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
 
-public class TaskWrapper {
+public class TaskWrapper extends Base {
     private final Runnable runnable;
-    private final Main plugin;
     private final String name;
     private int taskID;
     private boolean isRunning;
@@ -17,13 +16,11 @@ public class TaskWrapper {
         String[] classPathSplitted = classPath.split("\\.");
         String name = classPathSplitted[classPathSplitted.length - 1];
         this.runnable = runnable;
-        this.plugin = plugin;
         this.name = name;
     }
 
-    public TaskWrapper(Runnable runnable, Main plugin, String name) {
+    public TaskWrapper(Runnable runnable, String name) {
         this.runnable = runnable;
-        this.plugin = plugin;
         this.name = name;
     }
 
@@ -52,10 +49,6 @@ public class TaskWrapper {
 
     public String getName() {
         return name;
-    }
-
-    public JavaPlugin getPlugin() {
-        return plugin;
     }
 
     public int getTaskID() {

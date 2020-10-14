@@ -34,6 +34,12 @@ commands:
     usage: "Usage: /<command>"
     permission: egc.load
 
+  # Testing Commands
+  rm:
+    description: "Unloads the entire plugin."
+    usage: "This is not a testing build thereby this command is not active."
+    permission: op
+
   # Hide and Seek Commands
   setseeker:
     description: "Sets the user as seeker."

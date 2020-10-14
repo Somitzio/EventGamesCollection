@@ -1,13 +1,11 @@
 package eventgamescollection.games.hide_and_seek;
 
-import eventgamescollection.Main;
-import eventgamescollection.exceptions.TaskAlreadyExistsException;
 import eventgamescollection.games.hide_and_seek.runnables.ArrowFiller;
-import eventgamescollection.inheritance.BaseGame;
+import eventgamescollection.abstracts.BaseGame;
 import static eventgamescollection.tools.PlayerTools.*;
 import static eventgamescollection.tools.ItemTools.*;
 import static eventgamescollection.logging.Log.*;
-import eventgamescollection.tasks.TasksHandler;
+import eventgamescollection.handlers.tasks.TasksHandler;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -27,7 +25,6 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.projectiles.ProjectileSource;
 
@@ -40,11 +37,11 @@ public class Game extends BaseGame implements CommandExecutor, Listener {
     private final List<Player> seekers;
     private final TasksHandler tasksHandler;
 
-    public Game(Main plugin) {
-        super(plugin, "Hide and Seek");
+    public Game() {
+        super( "Hide and Seek");
         this.hiders = new ArrayList<>();
         this.seekers = new ArrayList<>();
-        this.tasksHandler = new TasksHandler(getPlugin());
+        this.tasksHandler = new TasksHandler();
 
         ArrowFiller arrowFiller = new ArrowFiller(getSeekers());
         getTasksHandler().addRunnable(arrowFiller);
@@ -236,12 +233,9 @@ public class Game extends BaseGame implements CommandExecutor, Listener {
         makeUnbreakable(boots);
         inv.setBoots(boots);
 
-        ItemStack arrow = new ItemStack(Material.ARROW, 64);
 
-        for(int i = 0; i <= 6; i++) {
+        for(int i = 0; i <= 6; i++)
             inv.addItem(wood);
-            inv.addItem(arrow);
-        }
     }
 
     @Override
