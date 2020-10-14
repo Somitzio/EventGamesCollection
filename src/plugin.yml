@@ -2,7 +2,7 @@ name: "EventGamesCollection"
 main: eventgamescollection.Main
 version: "1.0.0"
 description: "A plugin to host events"
-author: "Discord: Fachi#2979"
+author: "Discord: Spyro#5683"
 
 permissions:
 
