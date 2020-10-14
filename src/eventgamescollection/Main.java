@@ -21,7 +21,7 @@ public class Main extends JavaPlugin {
         this.playerManager = new PlayerManager();
         this.gamesManager = new GamesManager();
         // change active to true to active the TestingManager
-        this.testingManager = new TestingManager(true, "/load hide and seek", "Lelleck");
+        this.testingManager = new TestingManager(true, "/load hide and seek", "");
     }
 
     @Override
